@@ -1,0 +1,1 @@
+uv run pyinstaller main.py --name="tldr_bot" --noconsole --onefile
