@@ -52,3 +52,17 @@ If `config.yml` is not present, the bot falls back to the previous `FEED_URLS`, 
 ```bash
 uv run python main.py
 ```
+
+## Release
+
+Use the manual GitHub Actions workflow to build the Windows executable and
+attach it to a GitHub Release:
+
+1. Open the repository on GitHub.
+2. Go to **Actions**.
+3. Select **Release**.
+4. Click **Run workflow**.
+5. Enter a release tag such as `v0.1.0`.
+
+The release workflow runs `exe_maker.sh` on `windows-latest` and uploads
+`tldr_bot-windows-x64.exe`.
