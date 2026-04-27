@@ -55,8 +55,8 @@ uv run python main.py
 
 ## Release
 
-Use the manual GitHub Actions workflow to build the Windows executable and
-attach it to a GitHub Release:
+Use the manual GitHub Actions workflow to build the Windows and Linux
+executables and attach them to a GitHub Release:
 
 1. Open the repository on GitHub.
 2. Go to **Actions**.
@@ -64,5 +64,5 @@ attach it to a GitHub Release:
 4. Click **Run workflow**.
 5. Enter a release tag such as `v0.1.0`.
 
-The release workflow runs `exe_maker.sh` on `windows-latest` and uploads
-`tldr_bot-windows-x64.exe`.
+The release workflow runs `exe_maker.sh` on `windows-latest` and `ubuntu-latest`,
+then uploads `tldr_bot-windows-x64.exe` and `tldr_bot-linux-x64`.
