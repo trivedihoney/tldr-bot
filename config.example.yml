@@ -1,0 +1,20 @@
+seen_file: .tldr_seen.json
+
+defaults:
+  poll_minutes: 360
+  first_run_limit: 5
+
+feeds:
+  - name: TLDR AI
+    url: https://bullrich.dev/tldr-rss/ai.rss
+    channel_name: ai-news
+    channel_id:
+    poll_minutes: 60
+    first_run_limit: 5
+
+  - name: TLDR Data
+    url: https://bullrich.dev/tldr-rss/data.rss
+    channel_name: data-news
+    channel_id: 123456789012345678
+    poll_minutes: 360
+    first_run_limit: 5

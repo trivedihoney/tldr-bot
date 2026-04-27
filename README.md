@@ -1,6 +1,6 @@
-# TLDR Discord Bot
+# tldr_bot
 
-Posts new items from TLDR RSS feeds to a Discord text channel.
+Posts new items from TLDR RSS feeds to Discord channels.
 
 ## Setup
 
@@ -10,23 +10,42 @@ Add your bot token to `.env`:
 DISCORD_BOT_TOKEN=your-token-here
 ```
 
-By default the bot reads TLDR AI and TLDR Data, then posts to a channel named `news-channel`.
-Items with titles ending in `(Sponsor)` are skipped.
+Define feeds in `config.yml`. The file is ignored by git so local channel IDs and feed choices can stay private.
+
+```yaml
+seen_file: .tldr_seen.json
+
+defaults:
+  poll_minutes: 360
+  first_run_limit: 5
+
+feeds:
+  - name: TLDR AI
+    url: https://bullrich.dev/tldr-rss/ai.rss
+    channel_name: ai-news
+    channel_id:
+    poll_minutes: 60
+    first_run_limit: 5
+
+  - name: TLDR Data
+    url: https://bullrich.dev/tldr-rss/data.rss
+    channel_name: data-news
+    channel_id: 123456789012345678
+    poll_minutes: 360
+    first_run_limit: 5
+```
+
+Each feed can use `channel_id`, `channel_name`, or both. If both are present, `channel_id` is used. `poll_minutes` and `first_run_limit` can be set per feed, with `defaults` filling in omitted values.
+
+Items with titles ending in `(Sponsor)` are skipped. Seen entries are tracked separately for each configured feed and destination.
 
 Optional `.env` settings:
 
 ```env
-DISCORD_NEWS_CHANNEL_ID=123456789012345678
-DISCORD_NEWS_CHANNEL_NAME=news-channel
-FEED_URLS=TLDR AI|https://bullrich.dev/tldr-rss/ai.rss,TLDR Data|https://bullrich.dev/tldr-rss/data.rss
-TLDR_POLL_MINUTES=60
-TLDR_FIRST_RUN_LIMIT=5
-TLDR_SEEN_FILE=.tldr_seen.json
+TLDR_BOT_CONFIG=config.yml
 ```
 
-Each feed is configured as `Name|URL`, separated by commas. You can add more TLDR feeds to `FEED_URLS` with the same format.
-
-Using `DISCORD_NEWS_CHANNEL_ID` is the most reliable option. If it is not set, the bot looks for the first text channel named `news-channel`.
+If `config.yml` is not present, the bot falls back to the previous `FEED_URLS`, `DISCORD_NEWS_CHANNEL_ID`, `DISCORD_NEWS_CHANNEL_NAME`, `TLDR_POLL_MINUTES`, `TLDR_FIRST_RUN_LIMIT`, and `TLDR_SEEN_FILE` environment variables.
 
 ## Run
 

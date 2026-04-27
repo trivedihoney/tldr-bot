@@ -1,5 +1,5 @@
 [project]
-name = "tldr-bot"
+name = "tldr_bot"
 version = "0.1.0"
 description = "Add your description here"
 readme = "README.md"
@@ -7,6 +7,7 @@ requires-python = ">=3.14"
 dependencies = [
     "discord-py>=2.7.1",
     "python-dotenv>=1.2.2",
+    "pyyaml>=6.0.3",
 ]
 
 [dependency-groups]
