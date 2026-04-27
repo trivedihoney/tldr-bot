@@ -64,5 +64,5 @@ executables and attach them to a GitHub Release:
 4. Click **Run workflow**.
 5. Enter a release tag such as `v0.1.0`.
 
-The release workflow runs `exe_maker.sh` on `windows-latest` and `ubuntu-latest`,
+The release workflow runs `exe_maker.sh` on `windows-latest` and `ubuntu-22.04`,
 then uploads `tldr_bot-windows-x64.exe` and `tldr_bot-linux-x64`.

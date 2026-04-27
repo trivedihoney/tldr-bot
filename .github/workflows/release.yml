@@ -24,7 +24,7 @@ jobs:
             source_path: dist/tldr_bot.exe
             asset_name: tldr_bot-windows-x64.exe
           - platform: Linux
-            os: ubuntu-latest
+            os: ubuntu-22.04
             source_path: dist/tldr_bot
             asset_name: tldr_bot-linux-x64
 
